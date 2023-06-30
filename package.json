@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/tbd54566975/web5-react-native-polyfills#readme",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   },
   "engines": {
     "node": ">= 16.0.0"
