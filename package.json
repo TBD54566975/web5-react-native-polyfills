@@ -40,14 +40,13 @@
   },
   "peerDependencies": {
     "@craftzdog/react-native-buffer": "^6.0.5",
-    "@noble/secp256k1": "^2.0.0",
-    "@noble/ed25519": "^2.0.0",
+    "@tbd54566975/web5": ">0.7.10",
+    "react-native-bignumber": "^0.2.1",
     "react-native-quick-base64": "^2.0.6",
-    "react-native-quick-crypto": "^0.6.1",
-    "react-native-bignumber": "^0.2.1"
+    "react-native-quick-crypto": "^0.6.1"
   },
   "devDependencies": {
-    "release-it": "^15.11.0"
+    "release-it": "^16.1.0"
   },
   "release-it": {
     "git": {
