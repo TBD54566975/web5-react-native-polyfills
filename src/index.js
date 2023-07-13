@@ -1,21 +1,30 @@
-import { atob, btoa } from "react-native-quick-base64";
+// ffi node crypto
+import crypto from 'crypto';
 
-// node
-import "fastestsmallesttextencoderdecoder";
+// ffi node buffer
+import { Buffer } from 'buffer';
+
+// ffi base64
+import { atob, btoa } from 'react-native-quick-base64';
+
+// js based text encoding
+import 'fastestsmallesttextencoderdecoder';
 
 // Hermes lacks AsyncIterator.
 // TODO: Remove when Hermes gets AsyncIterator
-import "@azure/core-asynciterator-polyfill";
-
-import { hmac } from "@noble/hashes/hmac";
-import { sha256 } from "@noble/hashes/sha256";
-import { sha512 } from "@noble/hashes/sha512";
-import * as secp from "@noble/secp256k1";
-import * as ed from "@noble/ed25519";
+import '@azure/core-asynciterator-polyfill';
 
 // achachingbrain relying on the Event API in it-modules
-import "event-target-polyfill";
+import 'event-target-polyfill';
 
+import { hmac } from '@noble/hashes/hmac';
+import { sha256 } from '@noble/hashes/sha256';
+import { sha512 } from '@noble/hashes/sha512';
+import * as secp from '@noble/secp256k1';
+import * as ed from '@noble/ed25519';
+
+global.crypto = crypto;
+global.buffer = Buffer;
 global.atob = atob;
 global.btoa = btoa;
 
