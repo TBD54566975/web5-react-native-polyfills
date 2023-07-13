@@ -10,15 +10,21 @@ This package provides an opinionated set of polyfills to:
 
 - no custom setup needed to support web5 on react native
 - no need for the webcrypto API in web5
-- higher prformance
-- opinionated set of high quality libraries maintained by react native experts at TBD
+- higher performance
+- opinionated set of high quality libraries verified by TBD
 
 ## Usage
 
 Install the native packages:
 
-```js
+```
 yarn add @tbd54566975/web5-react-native-polyfills react-native-quick-crypto @craftzdog/react-native-buffer react-native-bignumber react-native-quick-base64
+```
+
+Install pods:
+
+```
+npx pod-install@latest
 ```
 
 Add the following code to your index.js entrypoint:
