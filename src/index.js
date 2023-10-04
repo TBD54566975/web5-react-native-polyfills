@@ -17,6 +17,8 @@ import '@azure/core-asynciterator-polyfill';
 // achachingbrain relying on the Event API in it-modules
 import 'event-target-polyfill';
 
+import "react-native-url-polyfill/auto";
+
 import { hmac } from '@noble/hashes/hmac';
 import { sha256 } from '@noble/hashes/sha256';
 import { sha512 } from '@noble/hashes/sha512';
