@@ -2,53 +2,51 @@
 
 // C++ node crypto
 // not putting behind a check because this is the best and only tool for the job
-import crypto from "crypto";
+import crypto from 'crypto';
 
 // webcrypto fulfilled by C++ node crypto
 // not putting behind a check because this is the best and only tool for the job
-import { Crypto } from "@peculiar/webcrypto";
+import { Crypto } from '@peculiar/webcrypto';
 
 // ffi node buffer
 // not putting behind a check because this is the best and only tool for the job
-import { Buffer } from "buffer";
+import { Buffer } from 'buffer';
 
 // ffi base64
 // not putting behind a check because this is the best and only tool for the job
-import { atob, btoa } from "react-native-quick-base64";
+import { atob, btoa } from 'react-native-quick-base64';
 
 // add .stream() compatibility to blob
 // add Uint8Array compatibility to blob constructor
-import { polyfillBlob } from "./blob-polyfill";
+import { polyfillBlob } from './blob-polyfill';
 
 // Hermes lacks AsyncIterator (fixed in upcoming versions)
 // TODO: Remove when Hermes gets AsyncIterator
-if (typeof Symbol.asyncIterator === "undefined") {
-  require("@azure/core-asynciterator-polyfill");
+if (typeof Symbol.asyncIterator === 'undefined') {
+  require('@azure/core-asynciterator-polyfill');
 }
 
 // js based TextEncoder TextDecoder (TextEncoder fixed in upcoming)
 // there are checks inside the polyfill that will return the native impl if it exists
-require("fastestsmallesttextencoderdecoder");
+require('fastestsmallesttextencoderdecoder');
 
 // achachingbrain relying on the Event API in it-modules
-if (typeof EventTarget === "undefined") {
-  require("event-target-polyfill");
+if (typeof EventTarget === 'undefined') {
+  require('event-target-polyfill');
 }
 
-// hermes lacks URL in old hermes versions (fixed in Expo)
-if (typeof URL === "undefined") {
-  require("react-native-url-polyfill/auto");
-}
+// hermes lacks URL in old hermes versions (fixed in upcoming Expo)
+require('react-native-url-polyfill/auto');
 
 if (!global.structuredClone) {
-  global.structuredClone = require("realistic-structured-clone");
+  global.structuredClone = require('realistic-structured-clone');
 }
 
-import { hmac } from "@noble/hashes/hmac";
-import { sha256 } from "@noble/hashes/sha256";
-import { sha512 } from "@noble/hashes/sha512";
-import * as secp from "@noble/secp256k1";
-import * as ed from "@noble/ed25519";
+import { hmac } from '@noble/hashes/hmac';
+import { sha256 } from '@noble/hashes/sha256';
+import { sha512 } from '@noble/hashes/sha512';
+import * as secp from '@noble/secp256k1';
+import * as ed from '@noble/ed25519';
 
 global.crypto = crypto;
 global.crypto.subtle = new Crypto().subtle;

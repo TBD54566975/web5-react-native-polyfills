@@ -1,5 +1,5 @@
-import { getArrayBufferForBlob } from "react-native-blob-jsi-helper";
-import { ReadableStream } from "web-streams-polyfill";
+import { getArrayBufferForBlob } from 'react-native-blob-jsi-helper';
+import { ReadableStream } from 'web-streams-polyfill';
 
 const decoder = new TextDecoder();
 
@@ -24,7 +24,8 @@ function monkeyPatchBlobConstructor() {
         // TODO #64: Investigate performance here, and see if we can make an upstream change to fix.
         for (let i = 0; i < blobParts.length; i++) {
           if (blobParts[i] instanceof Uint8Array) {
-            blobParts[i] = decoder.decode(blobParts[i]); // Decode and replace in place if the element is a Uint8Array
+            // Decode and replace in place if the element is a Uint8Array
+            blobParts[i] = decoder.decode(blobParts[i]);
           }
         }
       }
