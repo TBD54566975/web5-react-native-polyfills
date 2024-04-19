@@ -1,6 +1,6 @@
 {
   "name": "@tbd54566975/web5-react-native-polyfills",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "An opinionated polyfill setup to enable web5 to work on react native",
   "main": "lib/index.js",
   "module": "lib/index.js",
