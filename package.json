@@ -8,7 +8,8 @@
   "source": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
-    "src"
+    "src",
+    "lib"
   ],
   "keywords": [
     "react-native",
