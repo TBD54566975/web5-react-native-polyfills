@@ -2,32 +2,33 @@
 
 This package provides an opinionated set of polyfills to:
 
-- enable web5 to work on react-native
-- shim crypto libraries
-- increased performance using C++ FFIs
+- enable web5 to work on react-native with no custom setup
+- increase performance using C++ native libraries similar to what underpins Node and Browser
 
-## Benefits
+### Pitch
 
-- no custom setup needed to support web5 on react native
-- no need for the webcrypto API in web5
-- higher performance
-- opinionated set of high quality libraries verified by TBD
+Use this package if:
+
+- You're just getting started.
+- You want to get up and running quickly on react native and don't want to spend time perfectly tweaking all of your globals and polyfills.
+
+### Anti-pitch
+
+Don't use this package if:
+
+- You want to perfectly understand the global namespace and everything that's going on with your RN runtime and JS engine.
+- You prefer to self manage the versions of all of these dependencies.
+- You don't want us to version these dependencies for you.
 
 ## Usage
 
-Install the native packages:
+Install the polyfill package and the native packages:
 
 ```
 yarn add @tbd54566975/web5-react-native-polyfills react-native-quick-crypto @craftzdog/react-native-buffer react-native-bignumber react-native-quick-base64
 ```
 
-Install pods:
-
-```
-npx pod-install@latest
-```
-
-Add the following code to your index.js entrypoint:
+Add the following code to the top of your index.js entrypoint:
 
 ```js
 import '@tbd54566975/web5-react-native-polyfills';
@@ -42,7 +43,7 @@ Add the following two entries inside the `plugins` key of your babel.config.js:
         {
           alias: {
             crypto: "react-native-quick-crypto",
-            stream: "stream-browserify",
+            stream: "readable-stream",
             buffer: "@craftzdog/react-native-buffer",
             "bn.js": "react-native-bignumber",
           },

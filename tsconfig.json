@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "React Native",
+  "compilerOptions": {
+    "allowJs": true,
+    "esModuleInterop": true,
+    "jsx": "react-native",
+    "lib": ["DOM", "ESNext"],
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "isolatedModules": false,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noEmit": false,
+    "sourceMap": true,
+    "outDir":"./lib",
+    "declaration": true,
+    "declarationMap": true
+  },
+  "exclude": ["lib", "node_modules"],
+  "include": ["src/**/*"]
+}
