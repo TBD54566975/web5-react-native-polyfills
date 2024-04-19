@@ -25,7 +25,7 @@ Don't use this package if:
 Install the polyfill package and the native packages:
 
 ```
-yarn add @tbd54566975/web5-react-native-polyfills react-native-quick-crypto @craftzdog/react-native-buffer react-native-bignumber react-native-quick-base64
+yarn add @tbd54566975/web5-react-native-polyfills react-native-quick-crypto @craftzdog/react-native-buffer react-native-bignumber react-native-quick-base64 react-native-blob-jsi-helper
 ```
 
 Add the following code to the top of your index.js entrypoint:
