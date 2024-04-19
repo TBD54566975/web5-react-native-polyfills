@@ -20,12 +20,31 @@ Don't use this package if:
 - You prefer to self manage the versions of all of these dependencies.
 - You don't want us to version these dependencies for you.
 
+## Polyfills
+
+| Package                               | Description                                                                              |
+| ------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `react-native-bignumber`              | Supply `bn.js` with C++ instead of JS                                                    |
+| `@craftzdog/react-native-buffer`      | Supply node `Buffer` with C++                                                            |
+| `react-native-quick-base64`           | Supply `global.atob` and `global.btoa` with C++ instead of JS                            |
+| `react-native-blob-jsi-helper`        | Supply `Blob` arrayBuffers with C++.                                                     |
+| `blob-polyfill.ts`                    | Supply `Blob.stream()` with C++. Add Uint8Array support for `Blob.constructor()` with JS |
+| `react-native-quick-crypto`           | Supply the node `crypto` API with C++ OpenSSL                                            |
+| `@peculiar/webcrypto`                 | Supply the `crypto.subtle` webcrypto API with `react-native-quick-crypto` C++ OpenSSL    |
+| `event-target-polyfill`               | Supply `new EventTarget()` with JS                                                       |
+| `realistic-structured-clone`          | Supply `global.structuredClone` with JS                                                  |
+| `web-streams-polyfill`                | Supply `ReadableStream` `WritableStream` with JS                                         |
+| `readable-stream`                     | Supply node `stream` with JS                                                             |
+| `react-native-url-polyfill`           | Supply the web & node `new URL()` API with JS                                            |
+| `fastestsmallesttextencoderdecoder`   | Supply `new TextEncoder()` and `new TextDecoder()` with JS                               |
+| `@azure/core-asynciterator-polyfill ` | Supply `AsyncIterator` with JS                                                           |
+
 ## Usage
 
-Install the polyfill package and the native packages:
+Install this package along with the following peer packages:
 
 ```
-yarn add @tbd54566975/web5-react-native-polyfills react-native-quick-crypto @craftzdog/react-native-buffer react-native-bignumber react-native-quick-base64 react-native-blob-jsi-helper
+yarn add @tbd54566975/web5-react-native-polyfills react-native-quick-crypto@^0.7.0-rc.0 @craftzdog/react-native-buffer react-native-bignumber react-native-quick-base64 react-native-blob-jsi-helper
 ```
 
 Add the following code to the top of your index.js entrypoint:
