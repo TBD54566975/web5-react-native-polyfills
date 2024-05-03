@@ -12,23 +12,18 @@ import { Crypto } from '@peculiar/webcrypto';
 // not putting behind a check because this is the best and only tool for the job
 import { Buffer } from 'buffer';
 
-// ffi base64
-// not putting behind a check because this is the best and only tool for the job
-import { atob, btoa } from 'react-native-quick-base64';
-
 // add .stream() compatibility to blob
 // add Uint8Array compatibility to blob constructor
 import { polyfillBlob } from './blob-polyfill';
+
+// js based TextDecoder
+import { TextDecoder } from 'text-encoding';
 
 // Hermes lacks AsyncIterator (fixed in upcoming versions)
 // TODO: Remove when Hermes gets AsyncIterator
 if (typeof Symbol.asyncIterator === 'undefined') {
   require('@azure/core-asynciterator-polyfill');
 }
-
-// js based TextEncoder TextDecoder (TextEncoder fixed in upcoming)
-// there are checks inside the polyfill that will return the native impl if it exists
-require('fastestsmallesttextencoderdecoder');
 
 // achachingbrain relying on the Event API in it-modules
 if (typeof EventTarget === 'undefined') {
@@ -48,11 +43,10 @@ import { sha512 } from '@noble/hashes/sha512';
 import * as secp from '@noble/secp256k1';
 import * as ed from '@noble/ed25519';
 
+global.TextDecoder = TextDecoder;
 global.crypto = crypto;
 global.crypto.subtle = new Crypto().subtle;
 global.buffer = Buffer;
-global.atob = atob;
-global.btoa = btoa;
 
 polyfillBlob();
 
