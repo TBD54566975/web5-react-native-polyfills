@@ -39,15 +39,11 @@ function monkeyPatchBlobConstructor() {
 }
 
 /**
- * React Native's Blob implementation currently does provide a `stream()` function.
- *
- * Web5 packages depend on this function for a multitude of functionality.
- *
- * This function provides a polyfill for this function if it does not exist.
+ * React Native's Blob implementation missing `stream` and `arrayBuffer` methods.
  */
-function polyfillBlobStream() {
+function polyfillBlobMethods() {
   if (!Blob.prototype.stream) {
-    Blob.prototype.stream = function (): ReadableStream<Uint8Array> {
+    Blob.prototype.stream = function (): ReadableStream {
       const blob = this;
 
       return new ReadableStream({
@@ -57,6 +53,12 @@ function polyfillBlobStream() {
           controller.close();
         },
       });
+    };
+  }
+
+  if (!Blob.prototype.arrayBuffer) {
+    Blob.prototype.arrayBuffer = function () {
+      return getArrayBuffer(this);
     };
   }
 }
@@ -71,7 +73,7 @@ function polyfillBlobStream() {
  * This function looks for the backing arrayBuffer for a Blob, with small microsleeps
  * until it is ultimately available via the JSI.
  */
-async function getArrayBuffer(blob: Blob): Promise<Uint8Array> {
+async function getArrayBuffer(blob: Blob) {
   let arrayBuffer: Uint8Array | undefined = undefined;
   try {
     arrayBuffer = getArrayBufferForBlob(blob);
@@ -93,5 +95,5 @@ function sleep(ms: number) {
 
 export function polyfillBlob() {
   monkeyPatchBlobConstructor();
-  polyfillBlobStream();
+  polyfillBlobMethods();
 }
